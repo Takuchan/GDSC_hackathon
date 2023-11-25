@@ -1,3 +1,7 @@
+"""
+こちらは教師あり学習のを一旦開発してやめたやつです。
+"""
+
 import tensorflow as tf 
 import numpy as np
 from tensorflow import keras
