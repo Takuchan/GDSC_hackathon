@@ -23,7 +23,7 @@ class MyGUI:
 
     def select_files(self):
         files = filedialog.askopenfilenames()
-        # 選択したファイルに対する処理をここに追加
+        # ToDo 選択したファイルに対する処理をここに追加
         self.selected_files = files
 
     def show_selected_files(self):
@@ -35,7 +35,7 @@ class MyGUI:
 
     def run_classification(self):
         try:
-            # 分類に関するPythonコードをここに追加
+            # ToDo 分類に関するPythonコードをここに追加
             print(f"分類ボタンが押されました。選択したファイル: {self.selected_files}")
         except AttributeError:
             print("ファイルが選択されていません")
