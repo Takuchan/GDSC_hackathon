@@ -6,9 +6,17 @@
     <ContentPage.Content>
         <VerticalStackLayout
             Padding="30,10, 10, 0"
-            Spacing="5">
-            <Label Text="科目数"/>
-            <Entry x:Name="Entry" Placeholder="科目数を入力してください。" Keyboard="Numeric" TextChanged="OnTextChanged"/>
+            Spacing="10">
+            <StackLayout>
+                <Label Text="科目数"/>
+                <Entry Placeholder="科目数を入力してください。" Keyboard="Numeric" TextChanged="OnTextChanged"/>
+            </StackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="監視フォルダ" VerticalOptions="Center"/>
+                <Button Clicked="OnClickPickFolderButton" Text="フォルダを参照"/>
+                <Label x:Name="NowFolderName" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
