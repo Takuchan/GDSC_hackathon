@@ -4,9 +4,9 @@ import os
 
 
 class TextClusterer:
-    def __init__(self, n_clusters, folder_path):
+    def __init__(self, n_clusters, texts):
         self.n_clusters = n_clusters
-        self.folder_path = folder_path
+        self.texts = texts
         self.vectorizer = TfidfVectorizer()
         self.kmeans = KMeans(n_clusters=self.n_clusters)
 

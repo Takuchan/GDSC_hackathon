@@ -15,18 +15,26 @@ class PDF2Figure:
             for pdf in self.pdfs[1:]:
                 if pdf.endswith('.pdf'):
                     doc = fitz.open(pdf)
+                    file = f'topofchikin/datas/{pdf}.txt'
+                    f = open(file, 'w', encoding='utf-8')
                     for page in range(len(doc)):
                         tmp = doc[page].get_text()
                         tmp2 = tmp.encode('utf-8','ignore')
                         text = tmp2.decode('utf-8')
                         self.texts.append([text])
+                        f.write(text)
 
                     doc.close()
+                    f.close()
                     print(f'{pdf}の処理が完了しました')
                 else:
                     print(f'{pdf}はPDFファイルではありません。この処理はスキップされました。')
+            self.processed = True
     def getProcessedTexts(self):
         return self.texts
+    
+    def getProcessed(self):
+        return self.processed
     
 def main():
     pdfs = sys.argv

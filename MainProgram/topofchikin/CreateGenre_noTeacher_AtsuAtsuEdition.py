@@ -5,14 +5,15 @@ import os
 n_clusters_input = int(input("クラスター数を指定してください。"))
 
 # ファイルのリストを取得します
-folder_path = 'topofchikin/datas'  # 'your_folder'をあなたのフォルダパスに置き換えてください
+folder_path = 'topofchikin/datas/'  # 'your_folder'をあなたのフォルダパスに置き換えてください
 file_names = os.listdir(folder_path)
 
 # 各ファイルのテキストを読み込みます
 texts = []
 for file_name in file_names:
-    with open(os.path.join(folder_path, file_name), 'r') as f:
+    with open(os.path.join(folder_path, file_name), 'r', encoding="utf-8") as f:
         texts.append(f.read())
+print(texts)
 
 # TF-IDFベクトル化を行います
 vectorizer = TfidfVectorizer()
