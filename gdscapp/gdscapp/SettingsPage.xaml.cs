@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Storage;
@@ -13,18 +8,22 @@ namespace gdscapp;
 public partial class SettingsPage : ContentPage
 {
     private string _previousText = "";
-    private readonly Regex _outnumRegex;
+    private readonly Regex _outnumRegex = new(@"[^\d]+$");
     
     public SettingsPage()
     {
         InitializeComponent();
-        _outnumRegex = new(@"[^\d]+$");
+
+        NumInput.Text = Preferences.Get("NumClusters", "");
+        NowFolderName.Text = Preferences.Get("FolderPath", "");
     }
 
     private void OnTextChanged(object sender, EventArgs e)
     {
         Entry entry = (Entry)sender;
         entry.Text = _outnumRegex.Replace(entry.Text, string.Empty);
+        
+        Preferences.Set("NumClusters", entry.Text);
     }
 
     private async void OnClickPickFolderButton(object _, EventArgs e)
@@ -38,6 +37,7 @@ public partial class SettingsPage : ContentPage
         {
             await Toast.Make($"The folder was picked: Name - {result.Folder.Name}, Path - {result.Folder.Path}", ToastDuration.Long).Show(cancellationToken);
             NowFolderName.Text = result.Folder.Path;
+            Preferences.Set("FolderPath", result.Folder.Path);
         }
         else
         {
