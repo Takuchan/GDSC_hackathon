@@ -5,4 +5,5 @@ mecab-python
 PyMuPDF
 
 scikit-learn
-
+google-generativeai
+google-cloud-translate
