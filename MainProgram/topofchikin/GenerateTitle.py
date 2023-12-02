@@ -47,31 +47,3 @@ class GenerateTitle:
     
 
 
-
-# model_list = [_ for _ in palm.list_models()]
-# for model in model_list:
-#     print(model.name)
-
-
-
-# class GenerateTitle:
-#     def __init__(self):
-#         pass
-
-#     def generate_title(self, text):
-#         vertexai.init(project="gdschackathon2023test", location="us-central1")
-#         parameters = {
-#             "candidate_count": 1,
-#             "max_output_tokens": 1024,
-#             "temperature": 0.2,
-#             "top_p": 0.8,
-#             "top_k": 40
-#         }
-#         model = TextGenerationModel.from_pretrained("text-bison")
-#         response = model.predict(
-#             """以下の文章を10文字程度のタイトルにしてください。 {}""".format(text),
-#             **parameters
-#         )
-#         print(f"Response from Model: {response.text}")
-#         return response.text
-

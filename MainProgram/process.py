@@ -11,11 +11,25 @@ def main():
     pdfs.convert()
     while (pdfs.getProcessed() == False):
         print("処置中です。")
-    cgn2
-    title = generateTitle.GenerateTitle().process(
-    "私は、その男の写真を三葉、見たことがある。一葉は、その男の、幼年時代、とでも言うべきであろうか、十歳前後かと推定される頃の写真であって、その子供が大勢の女のひとに取りかこまれ、"
-    )
-    print(title)
+    createGeneratenoTeacher = cgn2.CreateGenre_noTeacher_AtsuAtsuEdition()
+    result_list = createGeneratenoTeacher.process()
+    checkedKey_dict = {}
+    for key in result_list:
+        print(key[0],end=' , ')
+        if key[0] not in checkedKey_dict:
+            sliced_text = key[1][:1000]
+            title = generateTitle.GenerateTitle().process(sliced_text)
+            checkedKey_dict[key[0]] = title
+            print(title,end=' , ')
+            print(key[2])
+            print("--------------")
+        else:
+            print(checkedKey_dict[key[0]],end=' , ')
+            print(key[2])
+            print("--------------")
+
+
+        
     
 
 
