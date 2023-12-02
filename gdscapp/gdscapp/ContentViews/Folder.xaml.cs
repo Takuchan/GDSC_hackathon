@@ -17,6 +17,11 @@ public partial class Folder : ContentView
     {
         get => FileNames;
     }
+
+    public HorizontalStackLayout FolderNameLayout
+    {
+        get => FolderNameLine;
+    }
     public Folder()
     {
         InitializeComponent();
