@@ -1,4 +1,6 @@
-﻿namespace gdscapp;
+﻿using gdscapp.Backend;
+
+namespace gdscapp;
 
 public partial class AppShell : Shell
 {

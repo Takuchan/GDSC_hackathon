@@ -1,4 +1,5 @@
-﻿using gdscapp.ContentViews;
+﻿using gdscapp.Backend;
+using gdscapp.ContentViews;
 
 namespace gdscapp;
 
@@ -8,6 +9,8 @@ public partial class ResultPage : ContentPage
     
     public ResultPage()
     {
+        PythonCaller.UpdateResult = UpdateResult;
+        
         InitializeComponent();
         var folderInfo = new FolderInfo("こころのはたらき");
         folderInfo.Files.Add("第一回 授業説明.pdf");
@@ -22,6 +25,22 @@ public partial class ResultPage : ContentPage
         folderInfo2.Files.Add("第4回.pdf");
         _folderInfos.Add(folderInfo2);
         
+        foreach (var i in _folderInfos)
+        {
+            var folderView = new Folder();
+            folderView.FolderName.Text = i.Name;
+            foreach (var file in i.Files)
+            {
+                folderView.FileNamesLayout.Add(new Label(){ Text = $"・ {file}" });
+            }
+            
+            FolderLayout.Add(folderView);
+        }
+    }
+
+    public void UpdateResult(List<FolderInfo> folderInfos)
+    {
+        FolderLayout.Clear();
         foreach (var i in _folderInfos)
         {
             var folderView = new Folder();

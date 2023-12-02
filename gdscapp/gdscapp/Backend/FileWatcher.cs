@@ -1,14 +1,17 @@
 namespace gdscapp.Backend;
 
-public class FileWatcher
+public static class FileWatcher
 {
+    private static FileSystemWatcher _watcher;
     public static void Start(string path)
     {
-        FileSystemWatcher watcher = new FileSystemWatcher();
-        watcher.Path = path;
-        watcher.NotifyFilter = NotifyFilters.FileName;
-        watcher.Created += new FileSystemEventHandler(OnCreated);
-        watcher.EnableRaisingEvents = true;
+        _watcher?.Dispose();
+        
+        _watcher = new FileSystemWatcher();
+        _watcher.Path = path;
+        _watcher.NotifyFilter = NotifyFilters.FileName;
+        _watcher.Created += OnCreated;
+        _watcher.EnableRaisingEvents = true;
     }
 
     private static void OnCreated(object _, FileSystemEventArgs e)
