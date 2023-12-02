@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Storage;
+using gdscapp.Backend;
 
 namespace gdscapp;
 
@@ -16,6 +17,8 @@ public partial class SettingsPage : ContentPage
 
         NumInput.Text = Preferences.Get("NumClusters", "");
         NowFolderName.Text = Preferences.Get("FolderPath", "");
+        
+        FileWatcher.Start(NowFolderName.Text);
     }
 
     private void OnTextChanged(object sender, EventArgs e)
@@ -38,6 +41,8 @@ public partial class SettingsPage : ContentPage
             await Toast.Make($"The folder was picked: Name - {result.Folder.Name}, Path - {result.Folder.Path}", ToastDuration.Long).Show(cancellationToken);
             NowFolderName.Text = result.Folder.Path;
             Preferences.Set("FolderPath", result.Folder.Path);
+            
+            FileWatcher.Start(NowFolderName.Text);
         }
         else
         {
