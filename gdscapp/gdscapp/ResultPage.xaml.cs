@@ -5,7 +5,8 @@ namespace gdscapp;
 public partial class ResultPage : ContentPage
 {
     private readonly List<FolderInfo> _folderInfos = new();
-    
+    private readonly List<Button> _moveButtons = new();
+    private readonly List<Button> _folderButtons = new();
     public ResultPage()
     {
         InitializeComponent();
@@ -26,12 +27,47 @@ public partial class ResultPage : ContentPage
         {
             var folderView = new Folder();
             folderView.FolderName.Text = i.Name;
+            var button = new Button() { Text = "To", IsEnabled = false };
+            button.Clicked += OnFolderButton;
+            _folderButtons.Add(button);
+            folderView.FolderNameLayout.Add(button);
             foreach (var file in i.Files)
             {
-                folderView.FileNamesLayout.Add(new Label(){ Text = $"・ {file}" });
+                var horizontalLayout = new HorizontalStackLayout() { Spacing = 10, Padding = 10 };
+                horizontalLayout.Add(new Label(){ Text = $"・ {file}", VerticalOptions = LayoutOptions.Center});
+                var moveButton = new Button() { Text = "Move" };
+                moveButton.Clicked += OnMoveButton;
+                horizontalLayout.Add(moveButton);
+                _moveButtons.Add(moveButton);
+                
+                
+                folderView.FileNamesLayout.Add(horizontalLayout);
             }
             
             FolderLayout.Add(folderView);
+        }
+    }
+
+    private void OnMoveButton(object? obj, EventArgs e)
+    {
+        //MoveButtonを無効化
+        ChangeButtonListEnable(_moveButtons, false);
+        ChangeButtonListEnable(_folderButtons, true);
+        
+        
+    }
+    
+    private void OnFolderButton(object? obj, EventArgs e)
+    {
+        ChangeButtonListEnable(_moveButtons, true);
+        ChangeButtonListEnable(_folderButtons, false);
+    }
+
+    private void ChangeButtonListEnable(List<Button> buttons, bool isEnabled)
+    {
+        foreach (var button in buttons)
+        {
+            button.IsEnabled = isEnabled;
         }
     }
 }
