@@ -10,14 +10,14 @@ class GenerateTitle:
         pass
 
     def translate_text2jp(self,text):
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gdschackathon2023test-6650457dbb53.json"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "MainProgram/gdschackathon2023test-6650457dbb53.json"
         translate_client = translate.Client()
         result = translate_client.translate(text, target_language="ja")
 
         return result["translatedText"]
 
     def translate_text2en(self,text):
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gdschackathon2023test-6650457dbb53.json"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "MainProgram/gdschackathon2023test-6650457dbb53.json"
         translate_client = translate.Client()
         result = translate_client.translate(text, target_language="en")
         # print("Text: {}".format(result["input"]))

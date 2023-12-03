@@ -12,7 +12,7 @@ class CreateGenre_noTeacher_AtsuAtsuEdition:
         n_clusters_input = cluster_num
 
         # ファイルのリストを取得します
-        folder_path = 'topofchikin/datas/'  # 'your_folder'をあなたのフォルダパスに置き換えてください
+        folder_path = 'MainProgram/topofchikin/datas/'  # 'your_folder'をあなたのフォルダパスに置き換えてください
         file_names = os.listdir(folder_path)
         # 各ファイルのテキストを読み込みます
         texts = []
