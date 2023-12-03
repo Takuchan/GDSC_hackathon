@@ -8,8 +8,8 @@ class CreateGenre_noTeacher_AtsuAtsuEdition:
     def __init__(self):
         pass
 
-    def process(self):
-        n_clusters_input = int(input("クラスター数を指定してください。"))
+    def process(self,cluster_num):
+        n_clusters_input = cluster_num
 
         # ファイルのリストを取得します
         folder_path = 'topofchikin/datas/'  # 'your_folder'をあなたのフォルダパスに置き換えてください

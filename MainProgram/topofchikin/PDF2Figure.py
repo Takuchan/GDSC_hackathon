@@ -12,7 +12,7 @@ class PDF2Figure:
         if len(self.pdfs) == 1:
             print('引数にPDFファイルを指定してください')
         else:
-            for pdf in self.pdfs[1:]:
+            for pdf in self.pdfs[2:]:
                 if pdf.endswith('.pdf'):
                     doc = fitz.open(pdf)
                     file = f'topofchikin/datas/{pdf}.txt'
