@@ -1,5 +1,9 @@
 pymupdf
 tensorflow == 2.15.0
+frontend
+mecab-python
+PyMuPDF
 
 scikit-learn
-
+google-generativeai
+google-cloud-translate
