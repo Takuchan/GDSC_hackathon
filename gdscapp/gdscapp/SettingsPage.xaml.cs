@@ -10,13 +10,19 @@ public partial class SettingsPage : ContentPage
 {
     private string _previousText = "";
     private readonly Regex _outnumRegex = new(@"[^\d]+$");
-    
+
+    public static string FolderPath = "";
+    public static int ClusterNum = 2;
     public SettingsPage()
     {
         InitializeComponent();
 
         NumInput.Text = Preferences.Get("NumClusters", "");
         NowFolderName.Text = Preferences.Get("FolderPath", "");
+
+        
+        FolderPath = NowFolderName.Text;
+        ClusterNum = int.Parse(NumInput.Text);
         
         FileWatcher.Start(NowFolderName.Text);
     }

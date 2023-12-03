@@ -10,7 +10,7 @@ public partial class ResultPage : ContentPage
     private readonly List<Button> _folderButtons = new();
     public ResultPage()
     {
-        PythonCaller.UpdateResult = UpdateResult;
+        // PythonCaller.UpdateResult = UpdateResult;
         
         InitializeComponent();
         var folderInfo = new FolderInfo("こころのはたらき");
@@ -54,7 +54,7 @@ public partial class ResultPage : ContentPage
 
     public void UpdateResult(List<FolderInfo> folderInfos)
     {
-        FolderLayout.Clear();
+        // FolderLayout.Clear();
         foreach (var i in _folderInfos)
         {
             var folderView = new Folder();

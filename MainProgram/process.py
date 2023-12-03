@@ -29,10 +29,5 @@ def main():
             print(key[2])
             print("--------------")
 
-
-        
-    
-
-
 if __name__ == "__main__":
     main()
