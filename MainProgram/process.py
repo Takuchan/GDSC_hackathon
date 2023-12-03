@@ -7,12 +7,13 @@ import sys
 
 def main():
     os_pdfs = sys.argv
+    cluster_number = int(os_pdfs[1])
     pdfs = p2f.PDF2Figure(os_pdfs)
     pdfs.convert()
     while (pdfs.getProcessed() == False):
         print("処置中です。")
     createGeneratenoTeacher = cgn2.CreateGenre_noTeacher_AtsuAtsuEdition()
-    result_list = createGeneratenoTeacher.process()
+    result_list = createGeneratenoTeacher.process(cluster_num=cluster_number)
     checkedKey_dict = {}
     for key in result_list:
         print(key[0],end=' , ')
