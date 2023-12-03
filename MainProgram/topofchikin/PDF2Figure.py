@@ -15,7 +15,7 @@ class PDF2Figure:
             for pdf in self.pdfs[2:]:
                 if pdf.endswith('.pdf'):
                     doc = fitz.open(pdf)
-                    file = f'topofchikin/datas/{os.path.splitext(os.path.basename(pdf))[0]}.txt'
+                    file = f'topofchikin/datas/{os.path.basename(pdf)}.txt'
                     f = open(file, 'w', encoding='utf-8')
                     for page in range(len(doc)):
                         tmp = doc[page].get_text()
